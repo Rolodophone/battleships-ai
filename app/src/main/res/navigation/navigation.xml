@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/titleFragment">
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="net.rolodophone.battleshipsai.TitleFragment"
+        android:label="TitleFragment"
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_titleFragment_to_playerTurnFragment"
+            app:destination="@id/playerTurnFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerTurnFragment"
+        android:name="net.rolodophone.battleshipsai.PlayerTurnFragment"
+        android:label="PlayerTurnFragment"
+        tools:layout="@layout/fragment_player_turn">
+        <action
+            android:id="@+id/action_playerTurnFragment_to_aiTurnFragment"
+            app:destination="@id/aiTurnFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_playerTurnFragment_to_gameOverFragment"
+            app:destination="@id/gameOverFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/aiTurnFragment"
+        android:name="net.rolodophone.battleshipsai.AiTurnFragment"
+        android:label="AiTurnFragment"
+        tools:layout="@layout/fragment_ai_turn">
+        <action
+            android:id="@+id/action_aiTurnFragment_to_playerTurnFragment"
+            app:destination="@id/playerTurnFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_aiTurnFragment_to_gameOverFragment"
+            app:destination="@id/gameOverFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameOverFragment"
+        android:name="net.rolodophone.battleshipsai.GameOverFragment"
+        android:label="fragment_game_over"
+        tools:layout="@layout/fragment_game_over" >
+        <action
+            android:id="@+id/action_gameOverFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+        <argument
+            android:name="aiHasWon"
+            app:argType="boolean" />
+    </fragment>
+</navigation>
